@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/alfaroqi/learning-go-fiber-with-gorm/database"
+	"github.com/alfaroqi/learning-go-fiber-with-gorm/database/migration"
 	"github.com/alfaroqi/learning-go-fiber-with-gorm/route"
 	"github.com/gofiber/fiber/v2"
 	"github.com/joho/godotenv"
@@ -21,6 +22,10 @@ func init() {
 func main() {
 	// initial database
 	database.DatabaseInit()
+
+	// run migration
+	migration.RunMigration()
+
 	app := fiber.New()
 
 	// inittialize routes
